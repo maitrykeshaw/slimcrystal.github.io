@@ -1,1 +1,1 @@
-# slimcrystal.github.io
+# https://buy-slimcrystal.vercel.app
