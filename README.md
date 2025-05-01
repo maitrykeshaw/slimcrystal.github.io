@@ -1,1 +1,1 @@
-# https://buy-slimcrystal.vercel.app
+# https://buy-slimcrystal.vercel.app/
