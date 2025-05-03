@@ -1,12 +1,12 @@
 {
-  "name":"PWA Tutorial",
-  "short_name":"PWA",
+  "name":"SlimCrystal™ (Official) - Water Bottles Get 50% OFF",
+  "short_name":"SlimCrystal™",
   "start_url":"index.html",
   "display":"standalone",
   "background_color":"#5900b3",
   "theme_color":"#FF5733",
   "scope": ".",
-  "description":"This is a PWA tutorial.",
+  "description":"SlimCrystal is a water bottle that was designed to aid in weight loss.",
   "icons":[
   {
   "src":"icons/favicon-192x192.png",                     
