@@ -11,6 +11,9 @@ body {
 .container {
   overflow: hidden;
 }
+[data-imagelink]:not([data-imagelink=""]) {
+  cursor: pointer;
+}
 .hide {
   display: none;
 }
@@ -23,60 +26,35 @@ body {
 .innerContent {
   word-wrap: break-word;
 }
-.ea-buttonBounce {
-  animation: bounce 1.5s infinite;
-  animation-timing-function: ease-in;
+.ea-buttonRocking {
+  animation: rocking 2s infinite;
+  animation-timing-function: cubic-bezier(0, 0, 0.58, 1);
   transition: 0.2s;
 }
-.ea-buttonBounce:hover {
-  animation: none !important;
-}
-@keyframes bounce {
-  15% {
-    transform: translateY(0);
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+@keyframes rocking {
+  0% {
+    transform: rotate(0deg);
   }
-  35% {
-    transform: translateY(-35%);
-    box-shadow: 0px 8px 5px -5px rgba(0, 0, 0, 0.25);
+  25% {
+    transform: rotate(0deg);
   }
-  45% {
-    transform: translateY(0%);
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  50% {
+    transform: rotate(2deg);
   }
-  55% {
-    transform: translateY(-20%);
-    box-shadow: 0px 5px 4px -4px rgba(0, 0, 0, 0.25);
-  }
-  70% {
-    transform: translateY(0%);
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-  }
-  80% {
-    transform: translateY(-10%);
-    box-shadow: 0px 4px 3px -3px rgba(0, 0, 0, 0.25);
-  }
-  90% {
-    transform: translateY(0%);
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-  }
-  95% {
-    transform: translateY(-2%);
-    box-shadow: 0px 2px 3px -3px rgba(0, 0, 0, 0.25);
-  }
-  99% {
-    transform: translateY(0%);
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  75% {
+    transform: rotate(-2deg);
   }
   100% {
-    transform: translateY(0);
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+    transform: rotate(0deg);
   }
+}
+.ea-buttonRocking:hover {
+  animation: none !important;
 } /*!
-   * Bootstrap v3.1.1 (http://getbootstrap.com)
-   * Copyright 2011-2014 Twitter, Inc.
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   */ /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+ * Bootstrap v3.1.1 (http://getbootstrap.com)
+ * Copyright 2011-2014 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */ /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -94,10 +72,6 @@ a:hover {
 }
 b {
   font-weight: 700;
-}
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
 }
 img {
   border: 0;
@@ -189,23 +163,25 @@ a:focus {
 img {
   vertical-align: middle;
 }
-h1,
+.img-circle {
+  border-radius: 50%;
+}
 h2 {
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
 }
-h1,
 h2 {
   margin-top: 20px;
   margin-bottom: 10px;
 }
-h1 {
-  font-size: 36px;
-}
 h2 {
   font-size: 30px;
+}
+ul {
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 .container {
   margin-right: auto;
@@ -232,10 +208,13 @@ h2 {
   margin-left: -15px;
   margin-right: -15px;
 }
+.col-md-1,
 .col-md-3,
 .col-md-4,
 .col-md-6,
 .col-md-8,
+.col-md-9,
+.col-md-11,
 .col-md-12 {
   position: relative;
   min-height: 1px;
@@ -243,15 +222,24 @@ h2 {
   padding-right: 15px;
 }
 @media (min-width: 992px) {
+  .col-md-1,
   .col-md-3,
   .col-md-4,
   .col-md-6,
   .col-md-8,
+  .col-md-9,
+  .col-md-11,
   .col-md-12 {
     float: left;
   }
   .col-md-12 {
     width: 100%;
+  }
+  .col-md-11 {
+    width: 91.66666667%;
+  }
+  .col-md-9 {
+    width: 75%;
   }
   .col-md-8 {
     width: 66.66666667%;
@@ -264,6 +252,9 @@ h2 {
   }
   .col-md-3 {
     width: 25%;
+  }
+  .col-md-1 {
+    width: 8.33333333%;
   }
 }
 @font-face {
@@ -299,6 +290,14 @@ h2 {
 .innerContent {
   word-wrap: break-word;
 }
+.wideContainer {
+  max-width: 1120px;
+  width: 100%;
+}
+.wideContainer .containerInner {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 .midContainer {
   max-width: 720px;
   width: 100%;
@@ -319,17 +318,11 @@ h2 {
 .row {
   padding: 10px;
 }
-.padding10-top {
-  padding-top: 10px;
-}
 .padding20-top {
   padding-top: 20px;
 }
 .padding40-top {
   padding-top: 40px;
-}
-.padding10-bottom {
-  padding-bottom: 10px;
 }
 .padding20-bottom {
   padding-bottom: 20px;
@@ -344,24 +337,23 @@ h2 {
 .radius0 {
   border-radius: 0px;
 }
-.radius5 {
-  border-radius: 5px;
-}
 .radius10 {
   border-radius: 10px;
 }
 .radius15 {
   border-radius: 15px;
 }
-.padding5 {
-  padding: 5px !important;
+.cornersTop {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
-.padding10 {
-  padding: 10px !important;
+.borderSolid.border1px {
+  border-width: 1px;
+  border-style: solid;
 }
-.cornersBottom {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+.borderSolid.border2px {
+  border-width: 2px;
+  border-style: solid;
 }
 .borderSolid.border3px {
   border-width: 3px;
@@ -376,6 +368,38 @@ h2 {
 }
 .borderLight {
   border-color: rgba(0, 0, 0, 0.7);
+}
+.borderLightBottom {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom-color: rgba(0, 0, 0, 0.7);
+}
+.shadow10 {
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+.shadow20 {
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+.shadow30 {
+  -webkit-box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.3);
+}
+.shadow40 {
+  -webkit-box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.4);
+}
+.border1px {
+  background-position-y: -1px;
+}
+.border2px {
+  background-position-y: -2px;
 }
 .border3px {
   background-position-y: -3px;
@@ -392,6 +416,9 @@ h2 {
   background-attachment: fixed !important;
   background-repeat: repeat repeat !important;
   background-position: center center;
+}
+.bgRepeatX {
+  background-repeat: repeat-x !important;
 }
 .modalBackdropWrapper {
   position: fixed;
@@ -425,7 +452,6 @@ body {
   -webkit-font-smoothing: antialiased;
   color: inherit !important;
 }
-h1,
 h2 {
   margin-top: 0px;
 }
@@ -434,6 +460,9 @@ h2 {
 }
 .elMargin0 {
   margin-top: 0px;
+}
+.elAlign_left {
+  text-align: left;
 }
 .elAlign_center {
   text-align: center;
@@ -451,26 +480,23 @@ h2 {
 .elHeadlineWrapper .elHeadline span {
   padding: 0px;
 }
+.hsSize1 {
+  font-size: 16px;
+}
 .hsSize2 {
   font-size: 24px;
 }
-.hsSize3 {
-  font-size: 32px;
+.lh2 {
+  line-height: 1.5em;
 }
-.lh4 {
-  line-height: 1.3em;
+.lh6 {
+  line-height: 1.4em;
 }
 .lh3 {
   line-height: normal;
 }
-.deCapitalize {
-  text-transform: capitalize;
-}
 .de1pxLetterSpacing {
   letter-spacing: 1px;
-}
-.de2pxLetterSpacing {
-  letter-spacing: 2px;
 }
 .de-image-block img {
   max-width: 100%;
@@ -478,6 +504,15 @@ h2 {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0px;
+}
+.thumbnailImageDark {
+  border: 3px solid rgba(0, 0, 0, 0.7);
+}
+.elIMG.ximg.img-circle {
+  border-radius: 50% !important;
+}
+.ximg.img-circle {
+  border-radius: 50% !important;
 }
 .elButton {
   margin-right: auto;
@@ -505,9 +540,6 @@ h2 {
 }
 .elButtonPadding2 {
   padding: 9px 25px;
-}
-.elButton .fa_prepended {
-  margin-right: 10px;
 }
 .elButtonSize1 {
   font-size: 18px;
@@ -543,6 +575,11 @@ h2 {
 .elButtonColor1:hover {
   background-color: #0c69a8;
 }
+.elButtonShadow3 {
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+}
 .elBtnVP_10 {
   padding-top: 10px !important;
   padding-bottom: 10px !important;
@@ -557,51 +594,50 @@ h2 {
 .elButtonCorner3 {
   border-radius: 3px;
 }
-.elButtonCorner60 {
-  border-radius: 60px;
-}
-.elBTN_b_none {
-  border: none;
-}
 .elBTN_b_1 {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
-.elButtonShadowN1 {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+.elBulletList {
+  padding: 0px;
+  list-style-type: none;
 }
-.elButtonShadowFlatHighlight {
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+.elBulletList li i.fa,
+.elBulletList li i.fas {
+  margin-right: 0.71428571em;
 }
-.elButtonShadowFlatHighlight:hover {
-  box-shadow: inset 0 0px 0px 0 rgba(255, 255, 255, 0.22),
-    0 233px 233px 0 rgba(255, 255, 255, 0.12) inset;
+.elBulletListNew li {
+  padding-bottom: 6px;
+  list-style-type: none;
+  margin-bottom: 6px;
+  padding-left: 2em;
 }
-.elDivider {
-  width: 100%;
-  min-height: 1px;
-  margin: 0px;
+.elBulletListNew li i.fa,
+.elBulletListNew li i.fas {
+  margin-left: -2em;
 }
-.elDividerInner {
-  min-height: 1px;
+.elBulletList2 li {
+  font-size: 15px;
 }
-.elDivider:after {
-  clear: both;
-  content: ".";
-  display: block;
-  height: 0;
-  visibility: hidden;
+.elBulletList li:before {
+  left: 0px !important;
+  position: absolute;
 }
-.elDivider {
+.elBulletList_theme2 li {
+  padding: 0;
+  margin-bottom: 0;
+}
+.elBulletList_theme2 li i.fa,
+.elBulletList_theme2 li i.fas {
+  padding: 10px 10px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-bottom: 2px solid #ddd;
+  border-radius: 224px;
+  margin: 5px 0;
+  margin-right: 6px;
+  width: auto;
+  margin-left: 0 !important;
   display: inline-block;
-}
-.elDivider {
-  display: block;
-}
-.elDividerStyle1 .elDividerInner {
-  border-top-width: 1px;
-  border-top-style: solid;
 }
 .elInput {
   outline: none !important;
@@ -616,12 +652,17 @@ h2 {
   font-weight: 400;
   font-style: normal;
 } /*! Social Likes v3.0.4 by Artem Sapegin - http://sapegin.github.com/social-likes - Licensed MIT */ /*!
-  * Pricely v1.0
-  *
-  * Copyright 2013 - Forever, Weborithm.com
-  *
-  * Designed and built by Weborithm
-  */
+* Pricely v1.0
+*
+* Copyright 2013 - Forever, Weborithm.com
+*
+* Designed and built by Weborithm
+*/
+.elButtonShadow3 {
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+}
 .payselect-container:visible:last {
   border-bottom: 1px solid #e0e0e0;
 } /*! Swipebox v1.2.8 | Constantin Saguin csag.co | MIT License | github.com/brutaldesign/swipebox */
@@ -647,6 +688,10 @@ h2 {
     right: -6px;
   }
   .fullContainer .containerInner {
+    width: 100% !important;
+    min-width: 320px;
+  }
+  .wideContainer {
     width: 100% !important;
     min-width: 320px;
   }
@@ -710,11 +755,15 @@ h2 {
   .fullContainer .col-md-4,
   .fullContainer .col-md-6,
   .fullContainer .col-md-8,
+  .fullContainer .col-md-9,
   .fullContainer .col-md-12 {
     float: left !important;
   }
   .fullContainer .col-md-12 {
     width: 100%;
+  }
+  .fullContainer .col-md-9 {
+    width: 75%;
   }
   .fullContainer .col-md-8 {
     width: 66.66666667%;
@@ -727,6 +776,38 @@ h2 {
   }
   .fullContainer .col-md-3 {
     width: 25%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  [class*="mfs_"] li {
+    font-size: inherit !important;
+  }
+  .mfs_12 {
+    font-size: 12px !important;
+  }
+  .mfs_16 {
+    font-size: 16px !important;
+  }
+  .mfs_18 {
+    font-size: 18px !important;
+  }
+  .mfs_19 {
+    font-size: 19px !important;
+  }
+  .mfs_20 {
+    font-size: 20px !important;
+  }
+  .mfs_21 {
+    font-size: 21px !important;
+  }
+  .mfs_22 {
+    font-size: 22px !important;
+  }
+  .mfs_23 {
+    font-size: 23px !important;
+  }
+  .mfs_24 {
+    font-size: 24px !important;
   }
 }
 @media (max-width: 1170px) {
